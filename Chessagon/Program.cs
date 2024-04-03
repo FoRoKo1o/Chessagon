@@ -1,5 +1,8 @@
 
+using Chessagon.Configurations;
+using Chessagon.Contracts;
 using Chessagon.Data;
+using Chessagon.Repository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -32,6 +35,11 @@ namespace Chessagon
             });
 
             builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             var app = builder.Build();
 
