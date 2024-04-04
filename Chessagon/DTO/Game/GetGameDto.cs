@@ -1,14 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
 
 namespace Chessagon.DTO.Game
 {
-    public class GetGameDto
+    public class GetGameDto : BaseGameDto
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int Player1Id { get; set; }
-        public int Player2Id { get; set; }
-        public int? WinnerId { get; set; }
-        public int ratingChange { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Chessagon.Configurations
             CreateMap<User, UpdateUserDto>().ReverseMap();
 
             CreateMap<Game, GetGameDto>().ReverseMap();
+            CreateMap<Game, CreateGameDto>().ReverseMap();
         }
     }
 }
