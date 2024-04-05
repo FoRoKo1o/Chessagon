@@ -1,16 +1,33 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chessagon.Data
 {
     public class Game
     {
         public int Id { get; set; }
-        public int UserId { get; set; } // game host id (lets say always white player)
-        [ForeignKey(nameof(Player1Id))]
-        public int Player1Id { get; set; }
-        [ForeignKey(nameof(Player2Id))]
-        public int Player2Id { get; set; }
-        public int? WinnerId { get; set; } //if null, its a draw
-        public int ratingChange { get; set; } // same for both players
+
+        // Id gracza 1
+        [Required]
+        public string Player1Id { get; set; }
+        [ForeignKey("Player1Id")]
+        public virtual User Player1 { get; set; }
+
+        // Id gracza 2
+        [Required]
+        public string Player2Id { get; set; }
+        [ForeignKey("Player2Id")]
+        public virtual User Player2 { get; set; }
+
+        // Id gracza, który wygrał grę
+        public string WinnerId { get; set; } // zmiana typu na string
+        [ForeignKey("WinnerId")]
+        public virtual User Winner { get; set; }
+
+        // Jeśli null, to remis
+        public int? RatingChange { get; set; }
+
+        // Data gry
+        public DateTime Date { get; set; }
     }
 }

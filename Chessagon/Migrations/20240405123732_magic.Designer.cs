@@ -4,6 +4,7 @@ using Chessagon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chessagon.Migrations
 {
     [DbContext(typeof(ChessagonDbContext))]
-    partial class ChessagonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240405123732_magic")]
+    partial class magic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,9 +103,6 @@ namespace Chessagon.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsSoftDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -139,6 +139,9 @@ namespace Chessagon.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<bool>("isSoftDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -156,49 +159,49 @@ namespace Chessagon.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b21c3d75-5da4-4433-9a76-adb509915927",
+                            ConcurrencyStamp = "da3d0c74-0f61-4f6c-b844-9923d512e783",
                             Email = "admin@admin",
                             EmailConfirmed = true,
-                            IsSoftDeleted = false,
                             LockoutEnabled = false,
                             PasswordHash = "admintest",
                             PhoneNumberConfirmed = false,
                             Rating = 9999,
-                            SecurityStamp = "fb3075b4-e496-402f-9dc3-33afb6aa86df",
+                            SecurityStamp = "e3461b0c-3a7f-4382-a251-3a032e0b9fba",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "admin",
+                            isSoftDeleted = false
                         },
                         new
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1a5df82d-d7be-40ae-bb64-3ef533d23189",
+                            ConcurrencyStamp = "6364af5e-d728-4937-a186-cb97e27e7a52",
                             Email = "user@user",
                             EmailConfirmed = true,
-                            IsSoftDeleted = false,
                             LockoutEnabled = false,
                             PasswordHash = "usertest",
                             PhoneNumberConfirmed = false,
                             Rating = 200,
-                            SecurityStamp = "22cba366-f4a1-44aa-bd36-019771739aeb",
+                            SecurityStamp = "9735ad13-b552-4965-b2c5-2653759a1391",
                             TwoFactorEnabled = false,
-                            UserName = "user"
+                            UserName = "user",
+                            isSoftDeleted = false
                         },
                         new
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39be1149-7291-4eb4-b3f2-3c37ecec5576",
+                            ConcurrencyStamp = "a409fdb9-ae63-46b3-aa3b-d26a5a430de1",
                             Email = "user@user",
                             EmailConfirmed = true,
-                            IsSoftDeleted = true,
                             LockoutEnabled = false,
                             PasswordHash = "usertest",
                             PhoneNumberConfirmed = false,
                             Rating = 200,
-                            SecurityStamp = "2c323814-a1a6-4d7b-b5b9-45696f2d459b",
+                            SecurityStamp = "69b5a221-a97c-4d1d-b215-439fdbbf4ee3",
                             TwoFactorEnabled = false,
-                            UserName = "user"
+                            UserName = "user",
+                            isSoftDeleted = true
                         });
                 });
 
@@ -231,13 +234,13 @@ namespace Chessagon.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "255fb9cf-4b1c-4fee-b236-440a6099730c",
+                            Id = "403b2c0e-c14d-4472-b2cc-9e89dcf5880c",
                             Name = "Administrator",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "6fe0aa4c-a94c-4a92-ad31-56ca823a78f4",
+                            Id = "2b79cc27-82f3-4cb4-9d95-0bccf942ae1a",
                             Name = "User",
                             NormalizedName = "USER"
                         });

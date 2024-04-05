@@ -16,8 +16,8 @@ namespace Chessagon.Repository
 
         public async Task<User> GetUserDetails(int id)
         {
-            return await _context.Users.Include(u => u.GameHistory).
-                FirstOrDefaultAsync(u => u.Id == id);
+            return await _context.Users.Include(u => u.GameHistory)
+                .FirstOrDefaultAsync(u => u.Id == id.ToString());
         }
     }
 }

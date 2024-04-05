@@ -9,6 +9,7 @@ using Chessagon.Data;
 using Chessagon.Contracts;
 using AutoMapper;
 using Chessagon.DTO.Game;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Chessagon.Controllers
 {
@@ -27,6 +28,7 @@ namespace Chessagon.Controllers
 
         // GET: api/Games
         [HttpGet]
+        [Authorize(Roles = "User")] // NOTE TO SEGMK: Only Admin can access this endpoint
         public async Task<ActionResult<IEnumerable<GetGameDto>>> GetGames()
         {
             var games = await _gameRepository.GetAllAsync();
