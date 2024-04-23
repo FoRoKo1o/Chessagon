@@ -50,7 +50,6 @@ namespace Chessagon
             builder.Services.AddAutoMapper(typeof(MapperConfig));
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IGameRepository, GameRepository>();
             builder.Services.AddScoped<IAuthManager, AuthManager>();
 
